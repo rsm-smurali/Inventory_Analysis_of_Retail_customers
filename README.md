@@ -1,21 +1,65 @@
-This is a transaction level data at the Rogers market with Amazon Just Walk Out technology at Feb. 28, 2024. 
+Rogers Market Transaction Analysis with Amazon Just Walk Out Technology
 
-Key columns that will be used in this homework:
+Overview
+This project analyzes transaction-level data from the Rogers Market using Amazon Just Walk Out technology on February 28, 2024. The dataset contains key columns like purchase times, session IDs, trip durations, and group sizes. The goal is to answer several business questions by applying data analytics techniques, including customer flow, inventory buildup, and verifying Little’s Law.
 
-Purchase_datetime: It is a purchase time. Consider it as an exit time from the store.
+Key Columns
+Purchase_datetime: Timestamp when a customer exits the store (considered as the purchase time).
+Session_id: Identifier for groups of customers who made purchases together. Transactions with the same session ID belong to the same group.
+Trip_duration_mins: Duration (in minutes) that a customer or group spends in the store.
+Group_size: Number of customers who entered the store as a group and made purchases together.
+Objectives
+Customer Entry Analysis:
 
-Session_id: It is a session identifier, i.e., the first three transactions are three items that *ONE* group of size 1 bought. Notice that those three transactions have the same purchase_datetime.
+Plot the number of customers entering the store every 15 minutes from 7 AM to 11 PM.
+Calculate the average number of customers per hour entering the store.
+Average Flow Time:
 
-Trip_duration_mins: It is how long a customer/a group of customers spend within the store. So, purchase_datetime - trip_duration_mins = an entry time to the store.
+Calculate the average trip duration per customer, considering the group size.
+Determine the average time a customer spends in the store (flow time).
+Inventory Build-up Diagram:
 
-Group_size: how many customers came into the store as a group. One customer in that group will pay all together.
+From 7 AM to 11 PM, create an inventory build-up diagram showing the number of customers inside the store over time.
+Total Time & Average Inventory:
 
-1- Plot how many customers entered the store in every 15 minutes from 7AM-11:00PM. Then, calculate how many customers entered the store per hour on average.
+Calculate the total time spent in the store by all customers (the area under the inventory build-up diagram).
+Determine the average inventory of customers in the store.
+Little's Law Validation:
 
-2- Take the average of trip_duration_mins, considering the group size. What is the average flow time of a customer, i.e., on average, how many minutes a customer spends in the store?
+Use the results from the calculations above to check Little’s Law: 
+𝐿 = 𝜆 × 𝑊
+where:
 
-3- From 7AM till 11PM, draw the inventory build-up diagram. 
+L is the average inventory (number of customers in the store),
+λ is the average arrival rate of customers,
+W is the average time spent in the store (flow time).
 
-4- Calculate the total time summed up over all customers, i.e., the area under the inventory build-up diagram. Then, calculate the Inventory (or, the average inventory).
 
-5- Check the Little’s Law using the answers from above.
+Steps to Solve
+Data Preparation:
+
+Parse the purchase_datetime and calculate customer entry times using the formula:
+entry_time = purchase_datetime −trip_duration_mins
+entry_time=purchase_datetime−trip_duration_mins
+Group by 15-minute intervals to plot customer entries.
+
+Customer Flow Analysis:
+
+For each session, calculate how long each customer spent in the store, factoring in the group size.
+Compute average time per customer (flow time).
+Inventory Build-up Diagram:
+
+Track how many customers are inside the store at any given time, using entry and exit times, and plot the results.
+Total Time and Average Inventory:
+
+Compute the area under the inventory build-up diagram (total customer time).
+Calculate the average number of customers inside the store (average inventory).
+
+Validation of Little’s Law:
+Using the calculated values for flow time, arrival rate, and inventory, verify Little's Law.
+
+Tools & Technologies
+Python: For data manipulation, visualization, and analysis.
+pandas: To handle and manipulate time-series data efficiently.
+matplotlib/seaborn: For visualizations (e.g., inventory build-up diagram).
+Jupyter Notebooks: For running and documenting the analysis.
