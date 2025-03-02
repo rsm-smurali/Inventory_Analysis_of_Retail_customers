@@ -1,15 +1,16 @@
-Rogers Market Transaction Analysis with Amazon Just Walk Out Technology
+## Rogers Market Transaction Analysis with Amazon Just Walk Out Technology
 
-Overview
+# 1. Overview
 This project analyzes transaction-level data from the Rogers Market using Amazon Just Walk Out technology on February 28, 2024. The dataset contains key columns like purchase times, session IDs, trip durations, and group sizes. The goal is to answer several business questions by applying data analytics techniques, including customer flow, inventory buildup, and verifying Little’s Law.
 
-Key Columns
+# 2. Key Columns
 Purchase_datetime: Timestamp when a customer exits the store (considered as the purchase time).
 Session_id: Identifier for groups of customers who made purchases together. Transactions with the same session ID belong to the same group.
 Trip_duration_mins: Duration (in minutes) that a customer or group spends in the store.
 Group_size: Number of customers who entered the store as a group and made purchases together.
-Objectives
-Customer Entry Analysis:
+
+## 3. Objectives
+# Customer Entry Analysis:
 
 Plot the number of customers entering the store every 15 minutes from 7 AM to 11 PM.
 Calculate the average number of customers per hour entering the store.
@@ -35,30 +36,23 @@ L is the average inventory (number of customers in the store),
 W is the average time spent in the store (flow time).
 
 
-Steps to Solve
-Data Preparation:
-
-Parse the purchase_datetime and calculate customer entry times using the formula:
-entry_time = purchase_datetime −trip_duration_mins
-entry_time=purchase_datetime−trip_duration_mins
+## 4. Steps to Solve
+Parse the purchase_datetime and calculate customer entry times using the formula
+  entry_time = purchase_datetime −trip_duration_mins
+  entry_time=purchase_datetime−trip_duration_mins
 Group by 15-minute intervals to plot customer entries.
+For each session, calculate how long each customer spent in the store, factoring in the group size. 
+Compute average time per customer (flow time)
+Inventory Build-up Diagram
+  Track how many customers are inside the store at any given time, using entry and exit times, and plot the results
 
-Customer Flow Analysis:
-
-For each session, calculate how long each customer spent in the store, factoring in the group size.
-Compute average time per customer (flow time).
-Inventory Build-up Diagram:
-
-Track how many customers are inside the store at any given time, using entry and exit times, and plot the results.
-Total Time and Average Inventory:
-
-Compute the area under the inventory build-up diagram (total customer time).
-Calculate the average number of customers inside the store (average inventory).
-
+Total Time and Average Inventory
+  Compute the area under the inventory build-up diagram (total customer time).
+  Calculate the average number of customers inside the store (average inventory).
 Validation of Little’s Law:
-Using the calculated values for flow time, arrival rate, and inventory, verify Little's Law.
+  Using the calculated values for flow time, arrival rate, and inventory, verify Little's Law.
 
-Tools & Technologies
+## 5. Tools & Technologies
 Python: For data manipulation, visualization, and analysis.
 pandas: To handle and manipulate time-series data efficiently.
 matplotlib/seaborn: For visualizations (e.g., inventory build-up diagram).
