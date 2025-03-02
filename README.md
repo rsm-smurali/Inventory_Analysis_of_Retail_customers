@@ -1,4 +1,4 @@
-## Rogers Market Transaction Analysis with Amazon Just Walk Out Technology
+## Retail Market Inventory Transaction Analysis with Amazon Just Walk Out Technology
 
 # 1. Overview
 This project analyzes transaction-level data from the Rogers Market using Amazon Just Walk Out technology on February 28, 2024. The dataset contains key columns like purchase times, session IDs, trip durations, and group sizes. The goal is to answer several business questions by applying data analytics techniques, including customer flow, inventory buildup, and verifying Little’s Law.
